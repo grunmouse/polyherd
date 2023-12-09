@@ -1,0 +1,18 @@
+/* Суммирование списка */
+sumlst(lst):=sum(lst[i],i,1,length(lst));
+
+polygonR:R=a/(2*sin(%pi/N));
+polygonr:r=a/(2*tan(%pi/N));
+
+polygonA:%alpha=%pi/N; /* Угол полушага вершин */
+
+polygonPoint(N,n):=[R*cos(2*n*%pi/N), R*sin(2*n*%pi/N), 0];
+
+_polygonPoints(N,n):=block(
+    if n>=N then []
+    else (
+        cons(polygonPoint(N,n),_polygonPoints(N,n+1))
+    )
+);
+
+polygonPoints(N):=_polygonPoints(N,0);
